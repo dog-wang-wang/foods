@@ -11,33 +11,35 @@
 <body>
     <div id="foods" ></div>
     <div id="btn">
-    <button onclick="reflash()">刷新（）重新开始选择</button>
-    <button onclick="chose()">开始选择</button>
+    <button onclick="chose()">开始选</button>
     </div>
     <script>
-        var kinds=["麻辣烫","手抓饼","烤冷面","火锅","烧烤","自助","米粉","螺狮粉","烤苕皮","白吉馍","凉皮","米线"]
+        var kinds=["麻辣烫","手抓饼","烤冷面","火锅","烧烤","自助","米粉","螺狮粉","烤苕皮","白吉馍","凉皮","米线","炸鸡","汉堡","薯条/薯饼","章鱼小丸子","烤盘饭","饺子","冰糖葫芦","擀面皮","小笼包","面","炸串","麻辣拌","鸡公煲","热干面","玉米"]
         var food=document.getElementById("foods")
         var btns=document.getElementById("btn")
-        btn.setAttribute("style","position:absolute;left:43%;top:40%")
+        // var body=document.getElementsByTagName("body")
+        btn.setAttribute("style","position:absolute;left:47%;top:40%")
         food.setAttribute("style","height:500px;width:500px;position:absolute;left:35%;top:30%;border:1px solid red;font-size:100px;text-align: center;line-height: 500px;background:lightskyblue;")
-        var show=setInterval(function(){var i=parseInt(Math.random()*kinds.length);//随机生成一个数字
-                                            var kind=kinds[i]//选择出来食物
-                                            food.innerHTML="<p style='display:inline-block'>"+kind+"</p>"//把食物填进去
-                                          },100)
+        var show;
     function chose()
     {
-        btn.setAttribute("style","position:absolute;left:43%;top:40%")
+    var arr=btns.getAttribute("class")
+    console.log(arr)
+    if(arr==null||arr=="close")
+    {
+        btn.setAttribute("style","position:absolute;left:47%;top:40%")
        food.setAttribute("style","height:500px;width:500px;position:absolute;left:35%;top:30%;border:1px solid red;font-size:100px;text-align: center;line-height: 500px;background:lightskyblue;")
-       clearInterval(show)
-
-    }
-    function reflash(){
-        btn.setAttribute("style","position:absolute;left:43%;top:40%")
-        food.setAttribute("style","height:500px;width:500px;position:absolute;left:35%;top:30%;border:1px solid red;font-size:100px;text-align: center;line-height: 500px;background:lightskyblue;")
-         show=setInterval(function(){var i=parseInt(Math.random()*kinds.length);//随机生成一个数字
+       show=setInterval(function(){var i=parseInt(Math.random()*kinds.length);//随机生成一个数字
                                             var kind=kinds[i]//选择出来食物
                                             food.innerHTML="<p style='display:inline-block'>"+kind+"</p>"//把食物填进去
                                           },50)
+        btns.setAttribute("class","begin")
+    }
+    else{
+        clearInterval(show)
+        btns.setAttribute("class","close")
+    }
+
     }
     </script>
 </body>
